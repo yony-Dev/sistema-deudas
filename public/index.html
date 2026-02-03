@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Control de Deudas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<!-- BOTONES FIJOS EN ESQUINA SUPERIOR DERECHA -->
+<div class="position-fixed top-0 end-0 m-3" style="z-index: 1000;">
+  <button class="btn btn-secondary rounded-circle me-2"
+          data-bs-toggle="modal" data-bs-target="#modalVendedor"
+          style="width:50px; height:50px; font-size:20px;"
+          title="Agregar Vendedor">
+    👤
+  </button>
+  
+  <button class="btn btn-primary rounded-circle"
+          data-bs-toggle="modal" data-bs-target="#modalCliente"
+          style="width:50px; height:50px; font-size:24px;"
+          title="Agregar Cliente">
+    +
+  </button>
+</div>
+
+<div class="container mt-5 pt-4"> <!-- Añadí pt-4 para espacio de los botones fijos -->
+
+  <h2 class="mb-4">📱 Control de Recargas</h2>
+  
+  <!-- FILTRO POR DÍA -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5>📆 Deudas Pagadas por Día</h5>
+      <input type="date" id="filtroFecha" class="form-control mb-2">
+      <button onclick="filtrarPorDia()" class="btn btn-success w-100">
+        Ver Pagadas
+      </button>
+    </div>
+  </div>
+
+  <!-- AGREGAR DEUDA -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5>➕ Agregar Deuda</h5>
+
+      <select id="dCliente" class="form-control mb-2">
+        <option value="">Seleccione cliente</option>
+      </select>
+
+      <input id="dMonto" type="number" class="form-control mb-2" placeholder="Monto">
+
+      <button onclick="agregarDeuda()" class="btn btn-warning w-100">
+        Guardar Deuda
+      </button>
+    </div>
+  </div>
+
+  <h4>📋 Deudas Registradas</h4>
+  <div class="row" id="deudas"></div>
+
+</div>
+
+<!-- MODAL CLIENTE -->
+<div class="modal fade" id="modalCliente" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">➕ Nuevo Cliente</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input id="cNombre" class="form-control mb-2" placeholder="Nombre">
+        <input id="cTelefono" class="form-control mb-2" placeholder="Teléfono">
+        <select id="cCompania" class="form-control">
+          <option value="Claro">Claro</option>
+          <option value="Tigo">Tigo</option>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button class="btn btn-primary" onclick="agregarCliente()" data-bs-dismiss="modal">
+          Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL VENDEDOR -->
+<div class="modal fade" id="modalVendedor" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">➕ Nuevo Vendedor</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input id="vNombre" class="form-control" placeholder="Nombre del vendedor">
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button class="btn btn-success" onclick="agregarVendedor()" data-bs-dismiss="modal">
+          Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>

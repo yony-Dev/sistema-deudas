@@ -1,0 +1,18 @@
+{
+  "name": "control-deudas",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^16.4.0",
+    "express": "^4.21.2",
+    "mongoose": "^9.1.5"
+  }
+}
